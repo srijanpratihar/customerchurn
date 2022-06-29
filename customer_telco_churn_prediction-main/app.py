@@ -70,9 +70,9 @@ if(StreamingMovies=='Yes'):
         StreamingMovies=1
 else:
         StreamingMovies=0
-InternetService=st.text_input("InternetService")#1
-Contract=st.text_input("Contract") #2
-PaymentMethod=st.text_input("PaymentMethod")#3
+InternetService=st.selectbox('select the type of internet service you have',('DSL','Fiber optic','No'))
+Contract=st.selectbox('select the type of contract with the company',('Month-to-month','One year','Two year'))
+PaymentMethod=st.selectbox('select the type of contract with the company',('Electronic check','Mailed check','Bank transfer (automatic)','Credit card (automatic)'))
 PaperlessBilling=st.selectbox('do you have paperless Billing',('Yes','No'))
 if(PaperlessBilling=='Yes'):
         PaperlessBilling=1
