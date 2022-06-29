@@ -33,43 +33,42 @@ TotalCharges=(float)(st.number_input("TotalCharges"))
 
         
         #1
-        if(InternetService=="DSL"):
-            internet=[1,0,0]
-        elif(InternetService=="Fiber optic"):
-            internet=[0,1,0] 
-        else:
-            internet=[0,0,1]    
-        #2
+if(InternetService=="DSL"):
+    internet=[1,0,0]
+elif(InternetService=="Fiber optic"):
+    internet=[0,1,0] 
+else:
+    internet=[0,0,1]    
+#2
 
-        if(Contract=="Month-to-month"):
-            cont=[1,0,0]
-        elif(Contract=="One year"):
-            cont=[0,1,0] 
-        else:
-            cont=[0,0,1]   
-        #3
-        if(PaymentMethod=="Bank transfer (automatic)"):
-            transfer=[1,0,0,0]
-        elif(Contract=="Credit card (automatic)"):
-            transfer=[0,1,0,0] 
-        elif(Contract=="Electronic check"):
-            transfer=[0,0,1,0] 
-        else:
-            transfer=[0,0,0,1]  
+if(Contract=="Month-to-month"):
+    cont=[1,0,0]
+elif(Contract=="One year"):
+    cont=[0,1,0] 
+else:
+    cont=[0,0,1]   
+#3
+if(PaymentMethod=="Bank transfer (automatic)"):
+    transfer=[1,0,0,0]
+elif(Contract=="Credit card (automatic)"):
+    transfer=[0,1,0,0] 
+elif(Contract=="Electronic check"):
+    transfer=[0,0,1,0] 
+else:
+    transfer=[0,0,0,1]  
 
-        tenure=(tenure-1)/71
-        MonthlyCharges=(MonthlyCharges-18.25)/(118.75-18.25)
-        TotalCharges=(TotalCharges-18.8)/(8684.8-18.8)
-        btn = st.button("predict")
-        if btn:
-            prediction=model.predict(np.array([[gender,seniorcitizen,partner,dependents,tenure,phoneservice,MultipleLines,OnlineSecurity,OnlineBackup,DeviceProtection,TechSupport,StreamingTV,StreamingMovies,PaperlessBilling,MonthlyCharges,TotalCharges,internet[0],internet[1],internet[2],cont[0],cont[1],cont[2],transfer[0],transfer[1],transfer[2],transfer[3]]]))      
-        
-            if(prediction[0][0]>0.5):
-                value="The customer will leave the company"
-                st.subheader(value)
-            else:
-                value="The customer will not leave the company"  
-                st.subheader(value)  
+tenure=(tenure-1)/71
+MonthlyCharges=(MonthlyCharges-18.25)/(118.75-18.25)
+TotalCharges=(TotalCharges-18.8)/(8684.8-18.8)
+btn = st.button("predict")
+if btn:
+    prediction=model.predict(np.array([[gender,seniorcitizen,partner,dependents,tenure,phoneservice,MultipleLines,OnlineSecurity,OnlineBackup,DeviceProtection,TechSupport,StreamingTV,StreamingMovies,PaperlessBilling,MonthlyCharges,TotalCharges,internet[0],internet[1],internet[2],cont[0],cont[1],cont[2],transfer[0],transfer[1],transfer[2],transfer[3]]]))      
+    if(prediction[0][0]>0.5):
+        value="The customer will leave the company"
+        st.subheader(value)
+    else:
+        value="The customer will not leave the company"  
+        st.subheader(value)  
 
     
 
