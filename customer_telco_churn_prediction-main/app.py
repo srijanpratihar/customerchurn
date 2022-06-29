@@ -5,7 +5,7 @@ from keras.models import load_model
 import numpy as np 
 
 
-st.title("Welcome to flower prediction app")
+st.title("Welcome to customer churn prediction app")
 model=load_model('churn.h5')   
 
 gender=st.selectbox('select gender',('Male','Female'))
